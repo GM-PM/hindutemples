@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Temple Trails | Hindu Temple Books</title>
+
+  <style>
+    :root {
+      --saffron: #d96825;
+      --deep-saffron: #a94417;
+      --gold: #e4a83f;
+      --cream: #fff8ed;
+      --brown: #39251d;
+      --muted: #765f52;
+      --white: #ffffff;
+      --border: #ead8c5;
+      --shadow: 0 12px 32px rgba(72, 39, 19, 0.12);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, 92%);
+      margin: 0 auto;
+    }
+
+    .top-bar {
+      background: var(--brown);
+      color: #fff7eb;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: var(--deep-saffron);
+      white-space: nowrap;
+    }
+
+    .brand-symbol {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--saffron);
+      color: white;
+      font-size: 1.45rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-family: Arial, sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--saffron);
+    }
+
+    .cart-button {
+      border: 0;
+      background: var(--deep-saffron);
+      color: white;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    .cart-button:hover {
+      background: var(--saffron);
+    }
+
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(53, 25, 13, 0.88), rgba(91, 42, 16, 0.52)),
+        url("https://placehold.co/1600x760/e7a84c/632817?text=Hindu+Temple+Landscape")
+        center/cover;
+      color: white;
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 690px;
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 1.16rem;
+      color: #fff2db;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 999px;
+      background: var(--saffron);
+      color: white;
+      padding: 13px 23px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--gold);
+      color: var(--brown);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      margin-left: 10px;
+    }
+
+    .button.secondary:hover {
+      background: white;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.15;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 560px;
+      margin-top: 8px;
+    }
+
+    .text-link {
+      color: var(--deep-saffron);
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .text-link:hover {
+      color: var(--saffron);
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .book-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(72, 39, 19, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .book-cover {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      background: #e5a545;
+    }
+
+    .book-info {
+      padding: 18px;
+    }
+
+    .book-category {
+      color: var(--saffron);
+      font-family: Arial, sans-serif;
+      font-size: 0.73rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .book-card h3 {
+      font-size: 1.24rem;
+      margin: 7px 0;
+      line-height: 1.25;
+    }
+
+    .book-author {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 15px;
+    }
+
+    .book-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .price {
+      color: var(--deep-saffron);
+      font-size: 1.16rem;
+      font-weight: bold;
+    }
+
+    .small-button {
+      border: 0;
+      border-radius: 8px;
+      background: #f6e7d5;
+      color: var(--deep-saffron);
+      padding: 9px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .small-button:hover {
+      background: var(--saffron);
+      color: white;
+    }
+
+    .feature-section {
+      background: #f3e5d3;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      margin-bottom: 8px;
+      font-size: 1.25rem;
+    }
+
+    .feature p {
+      color: var(--muted);
+    }
+
+    .catalog {
+      background: white;
+    }
+
+    .catalog-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 28px;
+    }
+
+    .search-box {
+      width: min(380px, 100%);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 13px 18px;
+      outline: none;
+      color: var(--brown);
+    }
+
+    .search-box:focus {
+      border-color: var(--saffron);
+    }
+
+    .details {
+      display: none;
+      background: var(--cream);
+    }
+
+    .details.active {
+      display: block;
+    }
+
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .detail-image {
+      width: 100%;
+      max-width: 390px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .detail-content h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.12;
+      margin: 10px 0 15px;
+    }
+
+    .detail-content > p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+
+    .detail-meta {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 17px 0;
+      margin-bottom: 24px;
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .detail-meta strong {
+      display: block;
+      color: var(--deep-saffron);
+      margin-bottom: 3px;
+    }
+
+    .detail-purchase {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .detail-price {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--deep-saffron);
+    }
+
+    footer {
+      background: var(--brown);
+      color: #faead7;
+      padding: 48px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 35px;
+      margin-bottom: 34px;
+    }
+
+    footer h3 {
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    footer p,
+    footer li {
+      color: #ddc9b4;
+      font-size: 0.92rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 7px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      padding-top: 20px;
+      color: #c9b19b;
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    .cart-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 18, 11, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 20;
+    }
+
+    .cart-modal.open {
+      display: flex;
+    }
+
+    .cart-box {
+      width: min(500px, 100%);
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .close-cart {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 1.6rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cart-item small {
+      display: block;
+      color: var(--muted);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin: 22px 0;
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+
+    .checkout-form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .checkout-form.show {
+      display: block;
+    }
+
+    .checkout-form input {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    .checkout-form input:focus {
+      border-color: var(--saffron);
+    }
+
+    .empty-cart {
+      color: var(--muted);
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    @media (max-width: 900px) {
+      .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .detail-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .detail-image {
+        max-width: 320px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links a {
+        display: none;
+      }
+
+      .hero {
+        min-height: 540px;
+      }
+
+      .button.secondary {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .book-grid,
+      .features,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .catalog-toolbar,
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .book-cover {
+        height: 310px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    Free shipping on orders above ₹1,500 · Discover the sacred heritage of India
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <span class="brand-symbol">ॐ</span>
+        <span>Temple Trails</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#books">Books</a>
+        <a href="#about">About</a>
+        <button class="cart-button" onclick="openCart()">
+          Cart (<span id="cart-count">0</span>)
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Stories etched in stone</div>
+          <h1>Explore the sacred temples of India.</h1>
+          <p>
+            Curated books about Hindu temples, their history, architecture,
+            legends, rituals, and the places that bring them to life.
+          </p>
+          <a href="#books" class="button">Browse the collection</a>
+          <a href="#about" class="button secondary">Our story</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="books">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Featured collection</div>
+            <h2>Begin your temple journey</h2>
+            <p>
+              Handpicked guides and visual stories for pilgrims, travelers,
+              students, and lovers of Indian heritage.
+            </p>
+          </div>
+          <a href="#catalog" class="text-link">View all books →</a>
+        </div>
+
+        <div class="book-grid" id="featured-books"></div>
+      </div>
+    </section>
+
+    <section class="feature-section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">Why Temple Trails</div>
+            <h2>More than books</h2>
+          </div>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">🛕</div>
+            <h3>Authentic stories</h3>
+            <p>
+              Learn about temple traditions, local legends, festivals,
+              architecture, and spiritual practices.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">🧭</div>
+            <h3>Location-focused guides</h3>
+            <p>
+              Find useful information about temple locations, regions,
+              travel routes, and nearby places of interest.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">📚</div>
+            <h3>Thoughtfully curated</h3>
+            <p>
+              A growing collection created for readers who want to discover
+              India's sacred heritage at their own pace.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalog">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">The bookstore</div>
+            <h2>All books</h2>
+            <p>Browse our placeholder collection and find your next journey.</p>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar">
+          <input
+            type="search"
+            class="search-box"
+            id="search-input"
+            placeholder="Search by title, region, or topic..."
+            oninput="filterBooks()"
+          />
+          <span id="result-count"></span>
+        </div>
+
+        <div class="book-grid" id="all-books"></div>
+      </div>
+    </section>
+
+    <section class="details" id="book-details">
+      <div class="container detail-layout">
+        <div>
+          <img
+            id="detail-image"
+            class="detail-image"
+            src="https://placehold.co/600x800/e5a545/632817?text=Book+Cover"
+            alt="Book cover"
+          />
+        </div>
+
+        <div class="detail-content">
+          <div class="eyebrow" id="detail-category">Temple Guide</div>
+          <h2 id="detail-title">Book title</h2>
+          <p id="detail-description"></p>
+
+          <div class="detail-meta">
+            <div>
+              <strong>Author</strong>
+              <span id="detail-author"></span>
+            </div>
+            <div>
+              <strong>Pages</strong>
+              <span id="detail-pages"></span>
+            </div>
+            <div>
+              <strong>Format</strong>
+              <span id="detail-format"></span>
+            </div>
+          </div>
+
+          <div class="detail-purchase">
+            <span class="detail-price" id="detail-price"></span>
+            <button class="button" id="detail-add-button">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Temple Trails</h3>
+          <p>
+            A placeholder bookstore celebrating the history, architecture,
+            stories, and locations of Hindu temples.
+          </p>
+        </div>
+
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#books">Featured books</a></li>
+            <li><a href="#catalog">Book catalog</a></li>
+            <li><a href="#about">About us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>hello@templetrails.example</li>
+            <li>+91 00000 00000</li>
+            <li>India</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2026 Temple Trails. Demo storefront with placeholder content.
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-modal" id="cart-modal" onclick="closeCartOnOverlay(event)">
+    <div class="cart-box">
+      <div class="cart-header">
+        <h2>Your cart</h2>
+        <button class="close-cart" onclick="closeCart()">×</button>
+      </div>
+
+      <div id="cart-items"></div>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total">₹0</span>
+      </div>
+
+      <button class="button" id="checkout-button" onclick="showCheckout()">
+        Proceed to checkout
+      </button>
+
+      <form class="checkout-form" id="checkout-form" onsubmit="completePurchase(event)">
+        <input type="text" placeholder="Full name" required />
+        <input type="email" placeholder="Email address" required />
+        <input type="text" placeholder="Delivery address" required />
+        <button class="button" type="submit">Place demo order</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const books = [
+      {
+        id: 1,
+        title: "The Sacred Temples of South India",
+        author: "Ananya Rao",
+        category: "Architecture & Heritage",
+        price: 899,
+        pages: "224 pages",
+        format: "Hardcover",
+        description:
+          "A richly illustrated introduction to the grand temple traditions of Tamil Nadu, Kerala, Karnataka, and Andhra Pradesh. Discover distinctive architecture, major festivals, sacred legends, and practical location notes.",
+        image:
+          "https://placehold.co/600x800/d46b2a/fff4df?text=South+India+Temples"
+      },
+      {
+        id: 2,
+        title: "Pilgrimage Routes of North India",
+        author: "Vikram Sharma",
+        category: "Travel Guide",
+        price: 749,
+        pages: "192 pages",
+        format: "Paperback",
+        description:
+          "Explore famous temple towns and pilgrimage routes across North India, with suggested itineraries, historical context, cultural notes, and placeholder travel information.",
+        image:
+          "https://placehold.co/600x800/9b4b24/fff4df?text=North+India+Routes"
+      },
+      {
+        id: 3,
+        title: "Temples of Varanasi",
+        author: "Meera Iyer",
+        category: "City Guide",
+        price: 599,
+        pages: "148 pages",
+        format: "Paperback",
+        description:
+          "A visual and cultural guide to the sacred landscape of Varanasi, covering its celebrated temples, ghats, rituals, festivals, and stories passed down through generations.",
+        image:
+          "https://placehold.co/600x800/e4a83f/632817?text=Temples+of+Varanasi"
+      },
+      {
+        id: 4,
+        title: "The Living Heritage of Odisha",
+        author: "Rohan Das",
+        category: "Culture & History",
+        price: 999,
+        pages: "276 pages",
+        format: "Hardcover",
+        description:
+          "An exploration of Odisha's temple heritage, sculptural traditions, regional festivals, and the communities that continue to preserve these extraordinary sacred spaces.",
+        image:
+          "https://placehold.co/600x800/ba5b25/fff4df?text=Odisha+Heritage"
+      },
+      {
+        id: 5,
+        title: "Himalayan Shrines",
+        author: "Kavita Menon",
+        category: "Pilgrimage",
+        price: 849,
+        pages: "210 pages",
+        format: "Paperback",
+        description:
+          "Journey through the mountain shrines of the Himalayas with stories of devotion, geography, temple customs, and the landscapes surrounding each destination.",
+        image:
+          "https://placehold.co/600x800/7f563d/fff4df?text=Himalayan+Shrines"
+      },
+      {
+        id: 6,
+        title: "Temple Architecture: A Beginner's Guide",
+        author: "Arjun Patel",
+        category: "Architecture",
+        price: 699,
+        pages: "168 pages",
+        format: "Paperback",
+        description:
+          "Understand the key forms, symbols, layouts, towers, sculptures, and design principles found in Hindu temple architecture across India.",
+        image:
+          "https://placehold.co/600x800/d89437/632817?text=Temple+Architecture"
+      }
+    ];
+
+    let cart = [];
+    let selectedBookId = null;
+
+    function bookCard(book) {
+      return `
+        <article class="book-card">
+          <img class="book-cover" src="${book.image}" alt="${book.title}" />
+          <div class="book-info">
+            <div class="book-category">${book.category}</div>
+            <h3>${book.title}</h3>
+            <div class="book-author">By ${book.author}</div>
+            <div class="book-bottom">
+              <span class="price">₹${book.price.toLocaleString("en-IN")}</span>
+              <button class="small-button" onclick="viewDetails(${book.id})">
+                View details
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderBooks(list = books) {
+      document.getElementById("featured-books").innerHTML = books
+        .slice(0, 4)
+        .map(bookCard)
+        .join("");
+
+      document.getElementById("all-books").innerHTML = list
+        .map(bookCard)
+        .join("");
+
+      document.getElementById("result-count").textContent =
+        `${list.length} book${list.length === 1 ? "" : "s"} found`;
+    }
+
+    function filterBooks() {
+      const query = document
+        .getElementById("search-input")
+        .value.toLowerCase()
+        .trim();
+
+      const filtered = books.filter((book) =>
+        `${book.title} ${book.author} ${book.category} ${book.description}`
+          .toLowerCase()
+          .includes(query)
+      );
+
+      document.getElementById("all-books").innerHTML = filtered
+        .map(bookCard)
+        .join("");
+
+      document.getElementById("result-count").textContent =
+        `${filtered.length} book${filtered.length === 1 ? "" : "s"} found`;
+    }
+
+    function viewDetails(id) {
+      const book = books.find((item) => item.id === id);
+      selectedBookId = id;
+
+      document.getElementById("detail-image").src = book.image;
+      document.getElementById("detail-image").alt = book.title;
+      document.getElementById("detail-category").textContent = book.category;
+      document.getElementById("detail-title").textContent = book.title;
+      document.getElementById("detail-description").textContent =
+        book.description;
+      document.getElementById("detail-author").textContent = book.author;
+      document.getElementById("detail-pages").textContent = book.pages;
+      document.getElementById("detail-format").textContent = book.format;
+      document.getElementById("detail-price").textContent =
+        `₹${book.price.toLocaleString("en-IN")}`;
+
+      document.getElementById("detail-add-button").onclick = () =>
+        addToCart(book.id);
+
+      document.getElementById("book-details").classList.add("active");
+      document.getElementById("book-details").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function addToCart(id) {
+      const book = books.find((item) => item.id === id);
+      const existingItem = cart.find((item) => item.id === id);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...book, quantity: 1 });
+      }
+
+      updateCart();
+      openCart();
+    }
+
+    function updateCart() {
+      const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      );
+
+      document.getElementById("cart-count").textContent = itemCount;
+      document.getElementById("cart-total").textContent =
+        `₹${total.toLocaleString("en-IN")}`;
+
+      const cartItems = document.getElementById("cart-items");
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `<div class="empty-cart">Your cart is empty.</div>`;
+        document.getElementById("checkout-button").style.display = "none";
+        return;
+      }
+
+      document.getElementById("checkout-button").style.display = "inline-block";
+
+      cartItems.innerHTML = cart
+        .map(
+          (item) => `
+            <div class="cart-item">
+              <div>
+                <strong>${item.title}</strong>
+                <small>Quantity: ${item.quantity}</small>
+              </div>
+              <strong>₹${(item.price * item.quantity).toLocaleString("en-IN")}</strong>
+            </div>
+          `
+        )
+        .join("");
+    }
+
+    function openCart() {
+      updateCart();
+      document.getElementById("cart-modal").classList.add("open");
+    }
+
+    function closeCart() {
+      document.getElementById("cart-modal").classList.remove("open");
+      document.getElementById("checkout-form").classList.remove("show");
+    }
+
+    function closeCartOnOverlay(event) {
+      if (event.target.id === "cart-modal") {
+        closeCart();
+      }
+    }
+
+    function showCheckout() {
+      if (cart.length === 0) return;
+      document.getElementById("checkout-form").classList.add("show");
+    }
+
+    function completePurchase(event) {
+      event.preventDefault();
+
+      alert(
+        "Thank you! Your demo order has been placed. Payment integration can be connected here."
+      );
+
+      cart = [];
+      document.getElementById("checkout-form").reset();
+      closeCart();
+      updateCart();
+    }
+
+    renderBooks();
+    updateCart();
+  </script>
+</body>
+</html>
